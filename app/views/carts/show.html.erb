@@ -1,2 +1,19 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<table class="table-fixed w-full m-4">
+    <thead>
+        <tr class="bg-gray-500 text-white text-base">
+            <th class="py-2 w-1/2 ">Produto</th>
+            <th class="py-2 w-2/12 text-left">Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @cart.line_items.each do |line_item| %>
+        <tr>
+            <td class="py-4 flex items-center text-sm">
+                <%= image_pack_tag line_item.product.photo_path, alt: line_item.product.title, class: 'h-12' %>
+                <span class="pl-4"><%= line_item.product.title %></span>
+            </td>
+            <td class="py-4 text-sm"><%= sprintf("R$%0.02f", line_item.product.price) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

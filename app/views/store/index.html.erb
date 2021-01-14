@@ -9,6 +9,11 @@
  
           <!-- Price -->
           <p class="text-xl"><%= sprintf("R$%0.02f", product.price) %></p>
+
+          <!-- Buy Button -->
+          <%= button_to line_items_path(product_id: product), form_class: "w-full", class: 'btn cursor-pointer' do %>
+            <i class="fas fa-shopping-basket text-2xl pr-3"></i><span class="text-sm">Comprar</span>
+          <% end %>
       </div>
     <% end %>
 </section>

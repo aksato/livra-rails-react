@@ -11,13 +11,13 @@
         <% end %>
 
         <!-- Cart Icon -->
-        <a href="#" class="flex hover:bg-transparent group md:order-last">
+        <%= link_to @cart, class: 'flex hover:bg-transparent group md:order-last' do %>
             <i class="fas fa-shopping-cart text-white text-xl group-hover:text-gray-300"></i>
             <span
                 class="rounded-full w-4 h-4 -ml-1 -mt-2 self-start flex items-center justify-center bg-red-500 group-hover:bg-red-700 text-white group-hover:text-gray-300">
                 <p>0</p>
             </span>
-        </a>
+        <% end %>
 
         <!-- Navigation -->
         <nav :class="{ 'hidden': !open }" class="w-full md:w-auto md:block">
