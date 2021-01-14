@@ -1,0 +1,32 @@
+<header x-data="{ open: false }" class="w-full bg-green-500 text-white">
+    <div class="p-4 flex items-center justify-between flex-wrap md:max-w-screen-xl md:mx-auto">
+        <!-- Menu Button -->
+        <button x-on:click="open = !open" class="md:hidden">
+            <i class="fas fa-bars text-xl hover:text-gray-300"></i>
+        </button>
+
+        <!-- Logo -->
+        <%= link_to root_path, class: 'hover:bg-transparent' do %>
+        <%= image_pack_tag 'media/images/logo.svg', alt: 'A Livraria', class: 'h-6' %>
+        <% end %>
+
+        <!-- Cart Icon -->
+        <a href="#" class="flex hover:bg-transparent group md:order-last">
+            <i class="fas fa-shopping-cart text-white text-xl group-hover:text-gray-300"></i>
+            <span
+                class="rounded-full w-4 h-4 -ml-1 -mt-2 self-start flex items-center justify-center bg-red-500 group-hover:bg-red-700 text-white group-hover:text-gray-300">
+                <p>0</p>
+            </span>
+        </a>
+
+        <!-- Navigation -->
+        <nav :class="{ 'hidden': !open }" class="w-full md:w-auto md:block">
+            <ul>
+                <li class="pt-4 md:inline md:px-4">Blog</li>
+                <li class="pt-4 md:inline md:px-4">Perguntas</li>
+                <li class="pt-4 md:inline md:px-4">Notícias</li>
+                <li class="pt-4 md:inline md:px-4">Contato</li>
+            </ul>
+        </nav>
+    </div>
+</header>

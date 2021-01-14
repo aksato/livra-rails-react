@@ -1,0 +1,14 @@
+<section class="flex flex-col sm:flex-row sm:flex-wrap">
+    <% @products.each do |product| %>
+      <div class="w-full sm:self-stretch sm:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col items-center py-8 px-4">
+          <!-- Cover Image -->
+          <%= link_to product do %><%= image_pack_tag product.photo_path, alt: product.title, class: 'h-64' %><% end %>
+ 
+          <!-- Title -->
+          <%= link_to product.title, product, class: "text-base text-center py-4 sm:flex-grow hover:text-gray-500 hover:bg-transparent" %>
+ 
+          <!-- Price -->
+          <p class="text-xl"><%= sprintf("R$%0.02f", product.price) %></p>
+      </div>
+    <% end %>
+</section>
