@@ -26,5 +26,6 @@
         <h2 class="text-3xl pb-2 mt-8">Total no carrinho</h2>
         <p class="text-sm py-4"><span class="font-bold mr-4 ">Total</span><%= sprintf("R$%0.02f", @cart.total_price) %>
         </p>
+        <%= button_to "Concluir Compra", new_order_path, method: :get, form_class: "w-full", class: 'btn text-lg cursor-pointer' %>
     </div>
 </div>

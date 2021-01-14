@@ -1,0 +1,61 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-4">
+    <%= form.label :name, 'Nome', class: 'text-base mb-4' %>
+    <%= form.text_field :name, size: 40, class: 'input' %>
+  </div>
+
+  <div class="my-4">
+    <%= form.label :address, 'Endereço', class: 'text-base mb-4' %>
+    <%= form.text_area :address, rows: 3, cols: 40, class: 'input' %>
+  </div>
+
+  <div class="my-4">
+    <%= form.label :email, 'E-mail',  class: 'text-base mb-4' %>
+    <%= form.email_field :email, size: 40, class: 'input' %>
+  </div>
+
+  <div x-data="{ paymode: '' }">
+    <div class="my-4">
+      <%= form.label :pay_type, 'Forma de Pagamento',  class: 'text-base mb-4' %>
+      <%= form.select :pay_type, Order.pay_types.keys, {prompt: 'Escolha a forma de pagamento'}, {class: 'input',  'x-model'  => 'paymode' } %>
+    </div>
+
+    <div x-show="paymode == 'Deposito'" class="my-4">
+      <%= form.label :banco, 'Banco de Origem' ,  class: 'text-base mb-4' %>
+      <%= form.text_field :banco, size: 40, class: 'input' %>
+    </div>
+
+    <div x-show="paymode == 'Cartao de Credito'">
+      <div class="my-4">
+        <%= form.label :credit_card_number, 'Cartao de Credito' ,  class: 'text-base mb-4' %>
+        <%= form.password_field :credit_card_number, class: 'input' %>
+      </div>
+      <div class="my-4">
+        <%= form.label :expiration_date, 'Validade' ,  class: 'text-base mb-4' %>
+        <%= form.text_field :expiration_date, size: 9, class: 'input' %>
+      </div>
+    </div>
+
+    <div x-show="paymode == 'Boleto'" class="field my-4">
+      <%= form.label :order_cpf, 'CPF' ,  class: 'text-base mb-4' %>
+      <%= form.text_field :order_cpf, size: 40, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="w-full flex justify-end mt-8">
+    <%= form.submit "Fazer Pedido", form_class: "w-full", class: 'btn text-lg cursor-pointer' %>
+  </div>
+
+<% end %>

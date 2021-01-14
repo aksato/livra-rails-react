@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :line_items, only: :create
   resources :carts, only: :show
   root to: "store#index"
