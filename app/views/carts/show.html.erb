@@ -3,6 +3,8 @@
         <tr class="bg-gray-500 text-white text-base">
             <th class="py-2 w-1/2 ">Produto</th>
             <th class="py-2 w-2/12 text-left">Preço</th>
+            <th class="py-2 w-2/12 text-left">Quantidade</th>
+            <th class="py-2 w-2/12 text-left">Subtotal</th>
         </tr>
     </thead>
     <tbody>
@@ -13,7 +15,16 @@
                 <span class="pl-4"><%= line_item.product.title %></span>
             </td>
             <td class="py-4 text-sm"><%= sprintf("R$%0.02f", line_item.product.price) %></td>
+            <td class="py-4 text-sm"><%= line_item.quantity %></td>
+            <td class="py-4 text-sm"><%= sprintf("R$%0.02f", line_item.total_price) %></td>
         </tr>
         <% end %>
     </tbody>
 </table>
+<div class="w-full flex justify-end">
+    <div class="w-full md:max-w-md">
+        <h2 class="text-3xl pb-2 mt-8">Total no carrinho</h2>
+        <p class="text-sm py-4"><span class="font-bold mr-4 ">Total</span><%= sprintf("R$%0.02f", @cart.total_price) %>
+        </p>
+    </div>
+</div>
