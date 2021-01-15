@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>LivraRails</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+<head>
+  <title>Livra</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 </head>
- 
-<body class="flex flex-col h-screen justify-between overflow-y-scroll">
-  <%= render 'layouts/navigation' %>
-  <main class="w-full max-w-screen-xl mx-auto flex-grow">
-    <%= yield %>
-  </main>
-  <%= render 'layouts/footer' %>
+
+<body>
+  <%= yield %>
 </body>
- 
 </html>
