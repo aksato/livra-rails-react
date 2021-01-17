@@ -5,8 +5,13 @@ import Menu from "./Menu";
 import MenuButton from "./MenuButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-const Logo = () => <img src={logo} className="h-6" alt="A Livraria" />;
+const Logo = () => (
+  <Link to="/">
+    <img src={logo} className="h-6" alt="A Livraria" />
+  </Link>
+);
 const CartIcon = () => (
   <FontAwesomeIcon
     icon={faShoppingCart}
