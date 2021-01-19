@@ -5,29 +5,32 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import noImage from "../../../images/no_image.svg";
 import { Link } from "react-router-dom";
 
-function postLineItem(id) {
-  const csrf = document
-    .querySelector("meta[name='csrf-token']")
-    .getAttribute("content");
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRF-Token": csrf,
-    },
-    body: JSON.stringify({ product_id: id }),
-  };
-  fetch("/line_items.json", requestOptions)
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-}
-
 const Card = (props) => {
-  const { book } = props;
+  const { book, setTotal } = props;
   const formattedPrice = parseFloat(book.price).toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+
+  function postLineItem(id) {
+    const csrf = document
+      .querySelector("meta[name='csrf-token']")
+      .getAttribute("content");
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrf,
+      },
+      body: JSON.stringify({ product_id: id }),
+    };
+    fetch("/line_items.json", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        setTotal(data.cart_total);
+      });
+  }
+
   return (
     <div className="w-full sm:self-stretch sm:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col items-center py-8 px-4">
       <Link to={`/books/${book.id}`}>

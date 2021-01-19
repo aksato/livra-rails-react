@@ -32,7 +32,11 @@ function App() {
         <NavBar total={total} />
         <main className="w-full max-w-screen-xl mx-auto flex-grow">
           <Switch>
-            <Route path="/" exact component={Store} />
+            <Route
+              path="/"
+              exact
+              render={(props) => <Store {...props} setTotal={setTotal} />}
+            />
             <Route path="/blog" component={Blog} />
             <Route path="/perguntas" component={Perguntas} />
             <Route path="/noticias" component={Noticias} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../../stylesheets/application.css";
 import Card from "./Card";
 
-function Store() {
+function Store(props) {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -13,10 +13,11 @@ function Store() {
       });
   }, []);
 
+  const { setTotal } = props;
   return (
     <section className="flex flex-col sm:flex-row sm:flex-wrap">
       {books.map((book) => (
-        <Card book={book} key={book.id} />
+        <Card book={book} key={book.id} setTotal={setTotal} />
       ))}
     </section>
   );

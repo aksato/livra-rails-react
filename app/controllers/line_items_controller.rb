@@ -6,7 +6,7 @@ class LineItemsController < ApplicationController
         respond_to do |format|
             if @line_item.save
                 format.html { redirect_to @line_item.cart, notice: 'Item inserido com sucesso ao carrinho.' }
-                format.json { render json: @line_item.cart, status: :created  }
+                format.json { render json: {"cart_total"=>@line_item.cart.total_items}, status: :created  }
             else
                 format.html { render :new }
                 format.json { render json: @line_item.errors, status: :unprocessable_entity }
