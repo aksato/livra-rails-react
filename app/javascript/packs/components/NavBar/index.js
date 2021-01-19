@@ -12,15 +12,25 @@ const Logo = () => (
     <img src={logo} className="h-6" alt="A Livraria" />
   </Link>
 );
-const CartIcon = () => (
-  <FontAwesomeIcon
-    icon={faShoppingCart}
-    className="text-white text-xl hover:text-gray-300 hover:bg-transparent md:order-last"
-  />
+const CartIcon = ({ total }) => (
+  <Link className="group md:order-last flex" to="/cart">
+    <FontAwesomeIcon
+      icon={faShoppingCart}
+      className="text-white text-xl group-hover:text-gray-300 hover:bg-transparent"
+    />
+    <span
+      className={`rounded-full -ml-1 -mt-2 self-start flex items-center justify-center bg-red-500 group-hover:bg-red-700 text-white group-hover:text-gray-300 w-${
+        total < 10 ? 4 : 5
+      } h-4`}
+    >
+      <p>{total}</p>
+    </span>
+  </Link>
 );
 
-function NavBar() {
+function NavBar(props) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { total } = props;
 
   return (
     <header className="w-full bg-green-500 text-white">
@@ -31,7 +41,7 @@ function NavBar() {
           }}
         />
         <Logo />
-        <CartIcon />
+        <CartIcon total={total} />
         <Menu open={menuOpen} />
       </div>
     </header>
