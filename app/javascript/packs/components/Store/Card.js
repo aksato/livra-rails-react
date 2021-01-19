@@ -3,6 +3,7 @@ import "../../../stylesheets/application.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import noImage from "../../../images/no_image.svg";
+import { Link } from "react-router-dom";
 
 function postLineItem(id) {
   const csrf = document
@@ -29,21 +30,23 @@ const Card = (props) => {
   });
   return (
     <div className="w-full sm:self-stretch sm:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col items-center py-8 px-4">
-      <img
-        src={
-          book.has_photo
-            ? require("../../../images/" + book.photo_path.slice(6))
-            : noImage
-        }
-        alt={book.title}
-        className="h-64"
-      />
-      <a
-        href="#"
+      <Link to={`/books/${book.id}`}>
+        <img
+          src={
+            book.has_photo
+              ? require("../../../images/" + book.photo_path.slice(6))
+              : noImage
+          }
+          alt={book.title}
+          className="h-64"
+        />
+      </Link>
+      <Link
+        to={`/books/${book.id}`}
         className="text-base text-center py-4 sm:flex-grow hover:text-gray-500 hover:bg-transparent"
       >
         {book.title}
-      </a>
+      </Link>
       <p className="text-xl">R${formattedPrice}</p>
       <button
         onClick={() => postLineItem(book.id)}

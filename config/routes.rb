@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get 'perguntas', to: 'store#index'
   get 'noticias', to: 'store#index'
   get 'contato', to: 'store#index'
+  get 'books/:id', to: 'store#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

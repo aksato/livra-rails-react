@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Store from "./components/Store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import BookView from "./components/BookView";
 
 const GenericPage = (props) => (
   <h1 className="text-center p-4 text-lg">{props.title}</h1>
@@ -25,6 +26,7 @@ function App() {
             <Route path="/perguntas" component={Perguntas} />
             <Route path="/noticias" component={Noticias} />
             <Route path="/contato" component={Contato} />
+            <Route path="/books/:bookId" component={BookView} />
           </Switch>
         </main>
         <Footer />
